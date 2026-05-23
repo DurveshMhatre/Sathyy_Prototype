@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { ArrowRight, ArrowLeft, Shield, Check } from 'lucide-react';
 import { setUser, setConsents } from '@/lib/storage';
 import { ONBOARDING_REASONS, EMOTIONAL_INTAKE_OPTIONS } from '@/lib/mockData';
@@ -324,6 +325,13 @@ export default function SignupPage() {
             )}
           </button>
         </div>
+
+        {step === 0 && (
+          <p style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--charcoal-muted)', marginTop: 'var(--space-3)' }}>
+            Already have an account?{' '}
+            <Link href="/login" style={{ color: 'var(--saffron)', fontWeight: 600 }}>Log in</Link>
+          </p>
+        )}
 
         {/* Step indicator */}
         <p style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--charcoal-muted)', marginTop: 'var(--space-3)' }}>

@@ -50,8 +50,12 @@ export default function ListenerDashboard() {
         </nav>
 
         <div style={{ position: 'absolute', bottom: 'var(--space-6)', left: 'var(--space-6)', right: 'var(--space-6)' }}>
-          <div className="internal-nav-item" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            <LogOut size={18} /> Sign Out
+          <div
+            className="internal-nav-item"
+            style={{ color: 'rgba(255,255,255,0.4)', cursor: 'pointer' }}
+            onClick={() => window.location.href = '/internal'}
+          >
+            <LogOut size={18} /> Exit Dashboard
           </div>
         </div>
       </aside>
@@ -88,6 +92,21 @@ export default function ListenerDashboard() {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {activeTab === 'session' && !activeSession && (
+          <div id="no-active-session" style={{ textAlign: 'center', padding: 'var(--space-12) var(--space-4)', color: 'var(--charcoal-muted)' }}>
+            <MessageSquare size={48} style={{ opacity: 0.2, marginBottom: 'var(--space-4)' }} />
+            <h3 style={{ fontFamily: 'var(--font-display)', marginBottom: 'var(--space-2)', color: 'var(--charcoal-soft)' }}>
+              No active session
+            </h3>
+            <p style={{ fontSize: '0.9rem', marginBottom: 'var(--space-4)' }}>
+              Accept a session from the queue to start supporting a user.
+            </p>
+            <button className="btn btn-primary btn-pill" onClick={() => setActiveTab('queue')}>
+              View Session Queue
+            </button>
           </div>
         )}
 

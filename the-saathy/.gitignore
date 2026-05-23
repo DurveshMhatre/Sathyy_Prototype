@@ -44,3 +44,5 @@ next-env.d.ts
 # git push documentation
 gitpush.md
 
+#prompts
+/prompts/*

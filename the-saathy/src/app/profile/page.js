@@ -1,12 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Shield, Lock, CreditCard, Brain, Settings, ChevronRight, LogOut, Trash2, Bell } from 'lucide-react';
+import { ArrowLeft, Shield, Lock, CreditCard, Brain, Settings, ChevronRight, LogOut, Trash2, Bell, AlertTriangle } from 'lucide-react';
 import { getUser, clearAll } from '@/lib/storage';
 
 export default function ProfilePage() {
   const [user, setUserState] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -95,12 +96,43 @@ export default function ProfilePage() {
           ))}
         </div>
 
+        {/* Internal Tools (Development & Testing) */}
+        <div className="card" style={{ marginTop: 'var(--space-4)', borderTop: '2px dashed var(--bg-sand)', paddingTop: 'var(--space-4)' }}>
+          <p style={{ fontSize: '0.75rem', color: 'var(--charcoal-muted)', marginBottom: 'var(--space-3)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Development & Testing
+          </p>
+          <Link href="/internal" className="btn btn-outline btn-sm btn-full" style={{ marginBottom: 'var(--space-2)' }}>
+            Internal Tools (Demo)
+          </Link>
+        </div>
+
         {/* Logout */}
         <div style={{ marginTop: 'var(--space-6)', marginBottom: 'var(--space-8)' }}>
-          <button className="btn btn-outline btn-full" onClick={handleLogout} id="btn-logout"
-            style={{ color: 'var(--danger)', borderColor: 'var(--danger)' }}>
-            <LogOut size={16} /> Sign Out
-          </button>
+          {!showLogoutConfirm ? (
+            <button className="btn btn-outline btn-full" onClick={() => setShowLogoutConfirm(true)} id="btn-logout"
+              style={{ color: 'var(--danger)', borderColor: 'var(--danger)' }}>
+              <LogOut size={16} /> Sign Out
+            </button>
+          ) : (
+            <div className="card" style={{ border: '1px solid var(--danger)', padding: 'var(--space-4)' }} id="logout-confirm">
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-3)', marginBottom: 'var(--space-4)' }}>
+                <AlertTriangle size={20} style={{ color: 'var(--warning)', flexShrink: 0, marginTop: 2 }} />
+                <p style={{ fontSize: '0.85rem', color: 'var(--charcoal-soft)' }}>
+                  Logging out will clear your local session. Your data is safe and you can log back in.
+                </p>
+              </div>
+              <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
+                <button className="btn btn-outline btn-full" onClick={() => setShowLogoutConfirm(false)}
+                  style={{ flex: 1 }}>
+                  Cancel
+                </button>
+                <button className="btn btn-full" onClick={handleLogout}
+                  style={{ flex: 1, background: 'var(--danger)', color: 'white', border: 'none' }}>
+                  <LogOut size={14} /> Confirm Sign Out
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

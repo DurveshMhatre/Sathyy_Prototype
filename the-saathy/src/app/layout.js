@@ -1,4 +1,5 @@
 import './globals.css';
+import DevTools from '@/components/DevTools';
 
 export const metadata = {
   title: 'The Saathy — Feel heard when loneliness feels heavy',
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
+        {process.env.NODE_ENV === 'development' && <DevTools />}
         {children}
       </body>
     </html>

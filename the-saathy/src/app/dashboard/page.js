@@ -65,6 +65,9 @@ export default function DashboardPage() {
           The Saathy
         </div>
         <div className="navbar-actions">
+          <span style={{ fontSize: '0.8rem', color: 'var(--charcoal-muted)' }}>
+            Hi, {user.name.split(' ')[0]}
+          </span>
           <Link href="/safety" className="btn btn-icon btn-ghost" id="nav-safety">
             <Shield size={20} />
           </Link>

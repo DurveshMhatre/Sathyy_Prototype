@@ -35,6 +35,9 @@ export default function LandingPage() {
           <Link href="/safety" className="btn btn-ghost btn-sm" id="nav-safety-link">
             <Shield size={16} /> Safety
           </Link>
+          <Link href="/login" className="btn btn-outline btn-sm btn-pill" id="nav-login-link">
+            Log In
+          </Link>
           <Link href="/signup" className="btn btn-primary btn-sm btn-pill" id="nav-signup-link">
             Get Started
           </Link>
@@ -66,6 +69,10 @@ export default function LandingPage() {
           </div>
           <p style={{ marginTop: 'var(--space-5)', fontSize: '0.85rem', color: 'var(--charcoal-muted)' }}>
             No credit card required • Cancel anytime • Crisis resources always free
+          </p>
+          <p style={{ fontSize: '0.82rem', color: 'var(--charcoal-muted)', marginTop: 'var(--space-3)' }}>
+            Already have an account?{' '}
+            <Link href="/login" style={{ color: 'var(--saffron)', fontWeight: 600 }}>Log in here</Link>
           </p>
         </div>
       </section>

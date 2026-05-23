@@ -53,8 +53,12 @@ export default function ModeratorDashboard() {
               SLA Reminder: Crisis flags must be resolved within 4 hours. General within 24 hours.
             </p>
           </div>
-          <div className="internal-nav-item" style={{ color: 'rgba(255,255,255,0.4)' }}>
-            <LogOut size={18} /> Sign Out
+          <div
+            className="internal-nav-item"
+            style={{ color: 'rgba(255,255,255,0.4)', cursor: 'pointer' }}
+            onClick={() => window.location.href = '/internal'}
+          >
+            <LogOut size={18} /> Exit Dashboard
           </div>
         </div>
       </aside>
